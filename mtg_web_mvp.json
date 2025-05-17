@@ -1,0 +1,104 @@
+{
+  "nodes": [
+    {
+      "id": "white",
+      "label": "White",
+      "type": "Color",
+      "colorHex": "#FFFFFF",
+      "themes": ["Order", "Protection", "Community"],
+      "mechanics": ["Life Gain", "Tokens", "Exile"],
+      "related": ["blue", "green"],
+      "exampleCards": ["Swords to Plowshares", "Serra Angel"]
+    },
+    {
+      "id": "blue",
+      "label": "Blue",
+      "type": "Color",
+      "colorHex": "#2196F3",
+      "themes": ["Control", "Knowledge", "Manipulation"],
+      "mechanics": ["Draw", "Counterspell", "Mill"],
+      "related": ["white", "black"],
+      "exampleCards": ["Counterspell", "Brainstorm"]
+    },
+    {
+      "id": "black",
+      "label": "Black",
+      "type": "Color",
+      "colorHex": "#111111",
+      "themes": ["Ambition", "Sacrifice", "Death"],
+      "mechanics": ["Discard", "Reanimate", "Removal"],
+      "related": ["blue", "red"],
+      "exampleCards": ["Demonic Tutor", "Thoughtseize"]
+    },
+    {
+      "id": "red",
+      "label": "Red",
+      "type": "Color",
+      "colorHex": "#F44336",
+      "themes": ["Chaos", "Freedom", "Emotion"],
+      "mechanics": ["Direct Damage", "Haste", "Land Destruction"],
+      "related": ["black", "green"],
+      "exampleCards": ["Lightning Bolt", "Chandra, Torch of Defiance"]
+    },
+    {
+      "id": "green",
+      "label": "Green",
+      "type": "Color",
+      "colorHex": "#4CAF50",
+      "themes": ["Growth", "Nature", "Creatures"],
+      "mechanics": ["Ramp", "Trample", "Creature Buffs"],
+      "related": ["red", "white"],
+      "exampleCards": ["Llanowar Elves", "Garruk Wildspeaker"]
+    },
+    {
+      "id": "azorius",
+      "label": "Azorius",
+      "type": "Guild",
+      "colorIdentity": ["white", "blue"],
+      "themes": ["Law", "Order"],
+      "mechanics": ["Detain", "Control"],
+      "related": ["white", "blue"],
+      "exampleCards": ["Supreme Verdict"]
+    },
+    {
+      "id": "golgari",
+      "label": "Golgari",
+      "type": "Guild",
+      "colorIdentity": ["black", "green"],
+      "themes": ["Decay", "Rebirth"],
+      "mechanics": ["Graveyard", "Scavenge"],
+      "related": ["black", "green"],
+      "exampleCards": ["Deathrite Shaman"]
+    },
+    {
+      "id": "elf_tribal",
+      "label": "Elf Tribal",
+      "type": "Archetype",
+      "colorIdentity": ["green"],
+      "themes": ["Synergy", "Swarm"],
+      "mechanics": ["Mana Ramp", "Token Generation"],
+      "related": ["green"],
+      "exampleCards": ["Elvish Archdruid", "Wirewood Symbiote"]
+    },
+    {
+      "id": "white_tokens",
+      "label": "White Tokens",
+      "type": "Archetype",
+      "colorIdentity": ["white"],
+      "themes": ["Swarm", "Anthem Effects"],
+      "mechanics": ["Token Generation", "Buff All"],
+      "related": ["white"],
+      "exampleCards": ["Spectral Procession", "Intangible Virtue"]
+    }
+  ],
+  "edges": [
+    { "from": "white", "to": "azorius", "type": "guild" },
+    { "from": "blue", "to": "azorius", "type": "guild" },
+    { "from": "black", "to": "golgari", "type": "guild" },
+    { "from": "green", "to": "golgari", "type": "guild" },
+    { "from": "green", "to": "elf_tribal", "type": "archetype" },
+    { "from": "white", "to": "white_tokens", "type": "archetype" },
+    { "from": "elf_tribal", "to": "golgari", "type": "synergy" },
+    { "from": "white_tokens", "to": "azorius", "type": "synergy" }
+  ]
+}
