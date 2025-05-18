@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import colorCombinations from "./data/color_combinations.json";
+import colorCombinations from "../data/color_combinations.json";
 
 // Official MTG color order: White, Blue, Black, Red, Green
 const COLORS = ["white", "blue", "black", "red", "green"] as const;
@@ -24,11 +24,11 @@ const COLOR_HEX: Record<Color, string> = {
 // You can download official MTG color mana symbols from Wikimedia Commons or Scryfall
 // Example URLs (SVGs, public domain): https://commons.wikimedia.org/wiki/Category:Magic:_The_Gathering_mana_symbols
 const COLOR_ICONS: Record<Color, string> = {
-  white: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Mana_W.svg",
-  blue: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Mana_U.svg",
-  black: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Mana_B.svg",
-  red: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Mana_R.svg",
-  green: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Mana_G.svg",
+  white: "https://svgs.scryfall.io/card-symbols/W.png",
+  blue: "https://svgs.scryfall.io/card-symbols/U.png",
+  black: "https://svgs.scryfall.io/card-symbols/B.png",
+  red: "https://svgs.scryfall.io/card-symbols/R.png",
+  green: "https://svgs.scryfall.io/card-symbols/G.png",
 };
 
 interface ColorSelectorProps {
