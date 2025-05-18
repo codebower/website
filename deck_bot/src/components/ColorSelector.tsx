@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import colorCombinations from "../data/color_combinations.json";
+import colorCombinations from "./data/color_combinations.json";
 
-type Color = "white" | "blue" | "black" | "red" | "green";
+// Official MTG color order: White, Blue, Black, Red, Green
+const COLORS = ["white", "blue", "black", "red", "green"] as const;
+type Color = typeof COLORS[number];
 
 const COLOR_LABELS: Record<Color, string> = {
   white: "White",
@@ -19,6 +21,16 @@ const COLOR_HEX: Record<Color, string> = {
   green: "#4CAF50",
 };
 
+// You can download official MTG color mana symbols from Wikimedia Commons or Scryfall
+// Example URLs (SVGs, public domain): https://commons.wikimedia.org/wiki/Category:Magic:_The_Gathering_mana_symbols
+const COLOR_ICONS: Record<Color, string> = {
+  white: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Mana_W.svg",
+  blue: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Mana_U.svg",
+  black: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Mana_B.svg",
+  red: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Mana_R.svg",
+  green: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Mana_G.svg",
+};
+
 interface ColorSelectorProps {
   onSelect: (selectedCombo: { id: string; label: string; colors: Color[] }) => void;
 }
@@ -33,7 +45,6 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ onSelect }) => {
   };
 
   const handleSubmit = () => {
-    // Find the matching combination
     const match = (colorCombinations as any).combinations.find((combo: any) => {
       return (
         combo.colors.length === selected.length &&
@@ -47,33 +58,63 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ onSelect }) => {
     }
   };
 
+  // Pentagon/star coordinates (relative to center)
+  const radius = 90;
+  const center = 100;
+  const positions = COLORS.map((_, i) => {
+    const angle = ((Math.PI * 2) / 5) * i - Math.PI / 2;
+    return {
+      left: center + radius * Math.cos(angle) - 30,
+      top: center + radius * Math.sin(angle) - 30,
+    };
+  });
+
   return (
     <div style={{ textAlign: "center", marginTop: "2rem" }}>
       <h2>Select Your Colors</h2>
-      <div style={{ display: "flex", justifyContent: "center", gap: "1rem", margin: "1rem 0" }}>
-        {Object.keys(COLOR_LABELS).map((color) => (
+      <div
+        style={{
+          position: "relative",
+          width: 200,
+          height: 200,
+          margin: "2rem auto",
+        }}
+      >
+        {COLORS.map((color, i) => (
           <button
             key={color}
-            onClick={() => toggleColor(color as Color)}
+            onClick={() => toggleColor(color)}
             style={{
-              background: COLOR_HEX[color as Color],
-              color: color === "white" ? "#222" : "#fff",
-              border: selected.includes(color as Color) ? "3px solid #333" : "1px solid #aaa",
+              position: "absolute",
+              ...positions[i],
+              background: COLOR_HEX[color],
+              border: selected.includes(color) ? "3px solid #333" : "1px solid #aaa",
               borderRadius: "50%",
               width: 60,
               height: 60,
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              cursor: "pointer",
-              outline: "none",
-              boxShadow: selected.includes(color as Color)
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: selected.includes(color)
                 ? "0 0 10px #333"
                 : "0 0 4px #aaa",
+              cursor: "pointer",
               transition: "all 0.2s",
+              outline: "none",
+              padding: 0,
             }}
-            aria-pressed={selected.includes(color as Color)}
+            aria-pressed={selected.includes(color)}
+            title={COLOR_LABELS[color]}
           >
-            {COLOR_LABELS[color as Color]}
+            <img
+              src={COLOR_ICONS[color]}
+              alt={COLOR_LABELS[color]}
+              style={{
+                width: 36,
+                height: 36,
+                filter: color === "white" ? "drop-shadow(0 0 2px #222)" : undefined,
+              }}
+            />
           </button>
         ))}
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import colorCombinations from "../data/color_combinations.json";
+import colorCombinations from "./data/color_combinations.json";
 
 type Color = "white" | "blue" | "black" | "red" | "green";
 
