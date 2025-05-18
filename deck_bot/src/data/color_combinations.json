@@ -1,0 +1,39 @@
+{
+  "combinations": [
+    { "id": "white", "label": "White", "colors": ["white"] },
+    { "id": "blue", "label": "Blue", "colors": ["blue"] },
+    { "id": "black", "label": "Black", "colors": ["black"] },
+    { "id": "red", "label": "Red", "colors": ["red"] },
+    { "id": "green", "label": "Green", "colors": ["green"] },
+
+    { "id": "azorius", "label": "Azorius", "colors": ["white", "blue"] },
+    { "id": "dimir", "label": "Dimir", "colors": ["blue", "black"] },
+    { "id": "rakdos", "label": "Rakdos", "colors": ["black", "red"] },
+    { "id": "gruul", "label": "Gruul", "colors": ["red", "green"] },
+    { "id": "selesnya", "label": "Selesnya", "colors": ["green", "white"] },
+    { "id": "orzhov", "label": "Orzhov", "colors": ["white", "black"] },
+    { "id": "izzet", "label": "Izzet", "colors": ["blue", "red"] },
+    { "id": "golgari", "label": "Golgari", "colors": ["black", "green"] },
+    { "id": "boros", "label": "Boros", "colors": ["red", "white"] },
+    { "id": "simic", "label": "Simic", "colors": ["green", "blue"] },
+
+    { "id": "bant", "label": "Bant", "colors": ["white", "blue", "green"] },
+    { "id": "esper", "label": "Esper", "colors": ["white", "blue", "black"] },
+    { "id": "grixis", "label": "Grixis", "colors": ["blue", "black", "red"] },
+    { "id": "jund", "label": "Jund", "colors": ["black", "red", "green"] },
+    { "id": "naya", "label": "Naya", "colors": ["red", "green", "white"] },
+    { "id": "abzan", "label": "Abzan", "colors": ["white", "black", "green"] },
+    { "id": "jeskai", "label": "Jeskai", "colors": ["blue", "red", "white"] },
+    { "id": "sultai", "label": "Sultai", "colors": ["black", "green", "blue"] },
+    { "id": "mardu", "label": "Mardu", "colors": ["red", "white", "black"] },
+    { "id": "temur", "label": "Temur", "colors": ["green", "blue", "red"] },
+
+    { "id": "glint", "label": "Glint (No Red)", "colors": ["white", "blue", "black", "green"] },
+    { "id": "dune", "label": "Dune (No Blue)", "colors": ["white", "black", "red", "green"] },
+    { "id": "ink", "label": "Ink (No Green)", "colors": ["white", "blue", "black", "red"] },
+    { "id": "witch", "label": "Witch (No White)", "colors": ["blue", "black", "red", "green"] },
+    { "id": "yore", "label": "Yore (No Black)", "colors": ["white", "blue", "red", "green"] },
+
+    { "id": "five_color", "label": "Five-Color", "colors": ["white", "blue", "black", "red", "green"] }
+  ]
+}
