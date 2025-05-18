@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import colorCombinations from "../data/color_combinations.json";
+import manaSprite from "../assets/Mana.svg";
 
 // Official MTG color order: White, Blue, Black, Red, Green
 const COLORS = ["white", "blue", "black", "red", "green"] as const;
@@ -21,14 +22,12 @@ const COLOR_HEX: Record<Color, string> = {
   green: "#4CAF50",
 };
 
-// You can download official MTG color mana symbols from Wikimedia Commons or Scryfall
-// Example URLs (SVGs, public domain): https://commons.wikimedia.org/wiki/Category:Magic:_The_Gathering_mana_symbols
-const COLOR_ICONS: Record<Color, string> = {
-  white: "https://svgs.scryfall.io/card-symbols/W.png",
-  blue: "https://svgs.scryfall.io/card-symbols/U.png",
-  black: "https://svgs.scryfall.io/card-symbols/B.png",
-  red: "https://svgs.scryfall.io/card-symbols/R.png",
-  green: "https://svgs.scryfall.io/card-symbols/G.png",
+const COLOR_SYMBOL_IDS: Record<Color, string> = {
+  white: "white",
+  blue: "blue",
+  black: "black",
+  red: "red",
+  green: "green",
 };
 
 interface ColorSelectorProps {
@@ -70,7 +69,15 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ onSelect }) => {
   });
 
   return (
-    <div style={{ textAlign: "center", marginTop: "2rem" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "80vh",
+      }}
+    >
       <h2>Select Your Colors</h2>
       <div
         style={{
@@ -106,15 +113,9 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ onSelect }) => {
             aria-pressed={selected.includes(color)}
             title={COLOR_LABELS[color]}
           >
-            <img
-              src={COLOR_ICONS[color]}
-              alt={COLOR_LABELS[color]}
-              style={{
-                width: 36,
-                height: 36,
-                filter: color === "white" ? "drop-shadow(0 0 2px #222)" : undefined,
-              }}
-            />
+            <svg width={36} height={36} style={{ display: "block" }}>
+              <use href={`${manaSprite}#${COLOR_SYMBOL_IDS[color]}`} />
+            </svg>
           </button>
         ))}
       </div>
@@ -130,6 +131,7 @@ export const ColorSelector: React.FC<ColorSelectorProps> = ({ onSelect }) => {
           border: "none",
           cursor: selected.length === 0 ? "not-allowed" : "pointer",
           opacity: selected.length === 0 ? 0.5 : 1,
+          marginTop: "2rem",
         }}
       >
         Confirm
