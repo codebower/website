@@ -3,18 +3,18 @@
 ```mermaid
 flowchart LR
     A[Web Browser]
-    B[JS App (D3.js or Cytoscape.js)]
-    C[Knowledge Graph (JSON)]
-    D[Python API (Flask or FastAPI)]
-    E[LLM API (OpenAI, Anthropic, Local)]
+    B[JS App]
+    C[Knowledge Graph JSON]
+    D[Python API]
+    E[LLM API]
 
-    A -- UI, Interactions --> B
-    B -- Loads --> C
+    A -- UI and Interactions --> B
+    B -- Loads Data --> C
     B -- API Calls --> D
     D -- Calls --> E
     D -- Returns Data --> B
 ```
 
-- **Frontend**: Loads the knowledge graph, handles user interaction, and renders the web.
-- **Backend**: (Optional for MVP) Handles LLM calls and advanced branching logic.
-- **LLM API**: Used for generating new branching options (future/optional).
+- **JS App**: D3.js or Cytoscape.js for rendering and logic.
+- **Python API**: Flask or FastAPI for backend logic (optional for MVP).
+- **LLM API**: OpenAI, Anthropic, or local model (future/optional).
